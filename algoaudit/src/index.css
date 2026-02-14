@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.glow-border {
+  position: relative;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.15), inset 0 0 20px rgba(34, 211, 238, 0.05);
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, transparent, rgba(34, 211, 238, 0.1), transparent);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+.terminal-bg {
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  background-size: 100% 2px;
+}
+
+.neon-text {
+  text-shadow: 
+    0 0 10px rgba(34, 211, 238, 0.8),
+    0 0 20px rgba(34, 211, 238, 0.5),
+    0 0 30px rgba(34, 211, 238, 0.3);
+}
+
+.cyber-button {
+  position: relative;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(59, 130, 246, 0.1));
+  border: 1px solid rgba(34, 211, 238, 0.5);
+  transition: all 0.3s;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+
+.cyber-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(59, 130, 246, 0.2));
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+  transform: translateY(-2px);
+}
+
+.cyber-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out;
+}
+
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.checkbox-custom {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(34, 211, 238, 0.5);
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.checkbox-custom:checked {
+  background: linear-gradient(135deg, #22d3ee, #3b82f6);
+  border-color: #22d3ee;
+}
+
+.checkbox-custom:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #22d3ee, #3b82f6, #22d3ee);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
